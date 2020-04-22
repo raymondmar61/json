@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Tutorials</title>
+</head>
+<body>
+<p>Read json filename jsontutorial.json.  Video Learn JSON in 10 Minutes</p>
+<script type="text/javascript">
+let companies =
+`[
+	{
+		"name": "Big Corporation",
+		"numberofemployees": 10000,
+		"ceo": "Mary",
+		"rating": 3.6
+	},
+	{
+		"name": "Small Startup",
+		"numberofemployees": 3,
+		"ceo": null,
+		"rating": 4.3
+	}
+]`
+console.log(JSON.parse(companies))
+console.log(JSON.parse(companies)[1].name) //print Small Startup
+</script>
+
+<p>Read json filename jsontutorial.json.  Video JSON Crash Course</p>
+<ul id="people">
+</ul>
+<script type="text/javascript">
+var person = {
+	name: "Brad",
+	age: 35,
+	address: {
+		street: "5 Main St",
+		city: "Boston"
+	},
+	children: ["Brianna","Nicholas"],
+	emailinvalidjson:  function(){
+		return "brad@gmail.com";
+	}
+}
+personstringify = JSON.stringify(person);
+personparse = JSON.parse(personstringify);
+
+console.log(person)
+console.log(person.name) //print Brad
+console.log(person.age) //print 35
+console.log(person.emailinvalidjson()) //print brad@gmail.com
+console.log(personstringify) //print {"name":"Brad","age":35}
+console.log(personstringify.name) //print undefined
+console.log(personparse) //print {"name":"Brad","age":35}
+console.log(personparse.name) //print Brad
+console.log(person.address.street) //print 5 Main St
+console.log(person.children[0]) //print Brianna
+;
+
+var peoplearray = [
+	{
+		name: "Brad",
+		age: 35
+	},
+	{
+		name: "John",
+		age: 40
+	},
+	{
+		name: "Sara",
+		age: 25
+	},
+];
+console.log(peoplearray[1]) //print {name: "John", age: 40}
+console.log(peoplearray[1].name) //print John
+var outputtohtml = "";
+for (var i = 0; i < peoplearray.length; i++){
+	console.log(peoplearray[i]) //{name: "Brad", age: 35}\n {name: "John", age: 40}\n {name: "Sara", age: 25}
+	outputtohtml += "<li>"+peoplearray[i].name+"</li>";
+}
+document.getElementById("people").innerHTML = outputtohtml;
+</script>
+
+<p>Read json filename jsontutorial.json.  Video Learn JSON in 10 Minutes codeSTACKr</p>
+<ul id="listoutput"></ul>
+<script>
+let data = {
+	"name":"John",
+	"age":30,
+	"addressisobject":{
+		"street":"123 First St.",
+		"city":"Houston",
+		"state":"TX"
+	},
+	"shoppinglistisarray":["milk","eggs","bread"]
+}
+console.log(data) //print {name: "John", age: 30}
+console.log(data.name) //print John
+console.log(data.addressisobject) //print {street: "123 First St.", city: "Houston", state: "TX"}
+console.log(data.addressisobject.city) //print Houston
+console.log(data.shoppinglistisarray) //print ["milk", "eggs", "bread"]
+console.log(data.shoppinglistisarray[2]) //print bread
+var list = data.shoppinglistisarray;
+var output = "";
+for(i=0;i<list.length;i++){
+	output+="<li>"+list[i]+"</li>";
+}
+document.getElementById("listoutput").innerHTML = output;
+console.log(data)
+let datausers = {
+"users":[
+	{
+		"name":"John",
+		"age":30,
+		"addressisobject":{
+			"street":"123 First St.",
+			"city":"Houston",
+			"state":"TX"
+		},
+		"shoppinglistisarray":["milk","eggs","bread"]
+	},
+	{
+		"name":"Mary",
+		"age":25,
+		"addressisobject":{
+			"street":"543 Second St.",
+			"city":"Dallas",
+			"state":"TX"
+		},
+		"shoppinglistisarray":["chips","milk","apples"]
+	}
+	]
+}
+console.log(datausers) //print {users: Array(2)}
+console.log(datausers["users"]) //print 0: {name: "John", age: 30, addressisobject: {…}, shoppinglistisarray: Array(3)} 1: {name: "Mary", age: 25, addressisobject: {…}, shoppinglistisarray: Array(3)}
+console.log(datausers["users"][1]["name"]) //print Mary
+console.log(datausers["users"][1]["addressisobject"]["state"]) //print TX
+console.log(datausers["users"][1]["shoppinglistisarray"][2]) //print apples
+</script>
+</body>
+</html>

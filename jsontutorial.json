@@ -1,0 +1,102 @@
+//Learn JSON in 10 Minutes
+{
+	"name": "Raymond",
+	"favoritenumber": 40,
+	"isprogrammerboolean": true,
+	"hobbiesarray": ["gym","board games","Harry Potter"],
+	"friendsmoreuserobjectsnesting": [{
+		"name": "Edward",
+		"favoritenumber": 310,
+		"isprogrammerboolean": false,
+		"hobbiesarray": ["alchemy","read","travel"]
+	}]
+}
+
+[
+	{
+		"name": "Big Corporation",
+		"numberofemployees": 10000,
+		"ceo": "Mary",
+		"rating": 3.6
+	},
+	{
+		"name": "Small Startup",
+		"numberofemployees": 3,
+		"ceo": null,
+		"rating": 4.3
+	}
+]
+
+//JSON Crash Course
+{
+	"name": "Brad Traversy",
+	"age": 35,
+	"addressembeddedobject": {
+		"street":"5 Main St",
+		"city":"Boston"
+	},
+	"childenarray": ["Brianna","Nicholas"]
+}
+{
+	"peoplearray": [
+	{
+		"name": "Brad",
+		"age": 35
+	},
+	{
+		"name": "John",
+		"age": 40
+	},
+	{
+		"name": "Sara",
+		"age": 25
+	}
+	]
+}
+
+//Learn JSON in 10 Minutes codeSTACKr
+{
+	"name":"John",
+	"age":20,
+	"likescats":true,
+	"grocerylistarray":["milk","eggs"],
+	"addressobject":{
+		"street":"123 First St.",
+		"city":"Houston",
+		"state":"TX"
+	}
+}
+{
+	"name":"John",
+	"age":30,
+	"addressisobject":{
+		"street":"123 First St.",
+		"city":"Houston",
+		"state":"TX"
+	},
+	"shoppinglistisarray":["milk","eggs","bread"]	
+}
+{
+	"users":[
+		{
+			"name":"John",
+			"age":30,
+			"addressisobject":{
+				"street":"123 First St.",
+				"city":"Houston",
+				"state":"TX"
+			},
+			"shoppinglistisarray":["milk","eggs","bread"]
+		},
+		{
+			"name":"Mary",
+			"age":25,
+			"addressisobject":{
+				"street":"543 Second St.",
+				"city":"Dallas",
+				"state":"TX"
+			},
+			"shoppinglistisarray":["chips","milk","apples"]
+		}
+		]
+}
