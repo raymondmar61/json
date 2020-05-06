@@ -1,0 +1,2 @@
+[{"name": "Brad Traversy","age": 35,"addressembeddedobject": {"street":"5 Main St","city":"Boston"},"childenarray": ["Brianna","Nicholas"]},
+{"peoplearray": [{"name": "Brad","age": 35},{"name": "John","age": 40},{"name": "Sara","age": 25}]}]
