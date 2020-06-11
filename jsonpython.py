@@ -203,3 +203,195 @@ print(jsonfile) #print {'name': 'max', 'age': 22, 'marks': [90, 50, 80, 40], 'pa
 print(type(jsonfile)) #print <class 'dict'>
 openjsonjsonfile.close()
 print(jsonfile["name"]) #print max
+
+#Python - Accessing Nested Dictionary Keys
+with open("source-data.json") as accessjson:
+    readcontent = json.load(accessjson) #create a python object with .json file
+print(type(readcontent)) #print <class 'dict'>
+print(readcontent)
+'''
+{'results': [{'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}, {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Daniel Weat'}}]}, {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Mike Jauranol'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Mike Jauranol'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}, {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}, {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Bernd Raucher'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}]}
+'''
+print(readcontent["results"])
+'''
+[{'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}, {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Daniel Weat'}}]}, {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Mike Jauranol'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Mike Jauranol'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}, {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}, {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Bernd Raucher'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}]
+'''
+accessquestion = readcontent["results"]
+print(type(accessquestion)) #print <class 'list'>
+#print(accessquestion["course"]) #print error message TypeError: list indices must be integers or slices, not str
+#RM:  JSON is list items are dictionaries.  Accessing nested dictionaries and lists--a dictionary contains a list contains a dictionary contains a list.
+print(type(accessquestion[1]))
+print(accessquestion[1]) #print <class 'dict'>
+'''
+{'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Daniel Weat'}}]}
+'''
+for eachaccessquestion in accessquestion:
+    print(eachaccessquestion)
+    '''
+    {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Daniel Weat'}}]}
+    {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}
+    {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Daniel Weat'}}]}
+    {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Mike Jauranol'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Mike Jauranol'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}
+    {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}
+    {'_class': 'question', 'course': {'_class': 'course', 'title': 'Angular 7 (formerly Angular 2) - The Complete Guide', 'url': '/the-complete-guide-to-angular-2/'}, 'replies': [{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Bernd Raucher'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]}
+    '''
+print(type(eachaccessquestion)) #print <class 'dict'>
+accessrepliesdictionarykey = eachaccessquestion["replies"]
+print(type(accessrepliesdictionarykey))  #print <class 'list'>
+print(accessrepliesdictionarykey)  #RM:  it printed the last replies in the for loop for eachaccessquestion in accessquestion:
+'''
+[{'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Bernd Raucher'}}, {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}]
+'''
+for eachaccessrepliesdictionarykey in accessrepliesdictionarykey:
+    print(eachaccessrepliesdictionarykey)
+    '''
+    {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}
+    {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Bernd Raucher'}}
+    {'_class': 'answer', 'user': {'_class': 'user', 'display_name': 'Maximilian Schwarzmueller'}}
+    '''
+print(type(eachaccessrepliesdictionarykey)) #print <class 'dict'>
+username = eachaccessrepliesdictionarykey["user"]["display_name"]
+print(username) #print Maximilian Schwarzmueller
+def getusernames():
+    accessquestion = readcontent["results"]
+    for eachaccessquestion in accessquestion:
+        accessrepliesdictionarykey = eachaccessquestion["replies"]
+        for eachaccessrepliesdictionarykey in accessrepliesdictionarykey:
+            username = eachaccessrepliesdictionarykey["user"]["display_name"]
+            print(username)
+            savedatalist.append(username)
+savedatalist = []
+getusernames()
+'''
+Maximilian Schwarzmueller
+Maximilian Schwarzmueller
+Maximilian Schwarzmueller
+Daniel Weat
+Maximilian Schwarzmueller
+Mike Jauranol
+Mike Jauranol
+Maximilian Schwarzmueller
+Maximilian Schwarzmueller
+Maximilian Schwarzmueller
+Bernd Raucher
+Maximilian Schwarzmueller
+'''
+print(savedatalist) #print ['Maximilian Schwarzmueller', 'Maximilian Schwarzmueller', 'Daniel Weat', 'Maximilian Schwarzmueller', 'Mike Jauranol', 'Mike Jauranol', 'Maximilian Schwarzmueller', 'Maximilian Schwarzmueller', 'Maximilian Schwarzmueller', 'Bernd Raucher', 'Maximilian Schwarzmueller']
+with open("usernamesnew.json","w") as fileobject:
+    json.dump(savedatalist, fileobject)
+
+#How to Convert JSON Data Into a Python Object
+import json
+class User:
+    def __init__(self, guid, isActive, name, email, phone, address):
+        self.guid = guid
+        self.isActive = isActive
+        self.firstname = name["first"]
+        self.lastname = name["last"]
+        self.email = email
+        self.phone = phone
+        self.address = address
+
+    @classmethod
+    def fromjson(cls, jsonstring):
+        jsondictionary = json.loads(jsonstring)
+        return cls(**jsondictionary)
+
+    def __repr__(self):
+        return f"<User { self.firstname }>"
+
+jsonstring = '''
+  {
+    "guid": "1f1c4ac7-fc36-4008-935b-d87ffc7d8700",
+    "isActive": false,
+    "name": {
+      "first": "Reid",
+      "last": "Warren"
+    },
+    "email": "reid.warren@undefined.name",
+    "phone": "+1 (983) 443-3504",
+    "address": "359 Rapelye Street, Holtville, Marshall Islands, 9692"
+  }
+'''
+user = User.fromjson(jsonstring)
+print(user) #print <User Reid>
+print(user.address) #print <User Reid>
+print(user.email) #print reid.warren@undefined.name
+print(user.phone) #print +1 (983) 443-3504
+userslist = []
+with open("bogussamplejsondata.json", "r") as jsonfile:
+    userdata = json.loads(jsonfile.read())
+    for eachuserdata in userdata:
+        userslist.append(User(**eachuserdata))
+print(userslist) #print [<User Reid>, <User Amelia>, <User Shari>, <User Lindsay>, <User Mckee>, <User Eunice>, <User Pearlie>, <User Leann>, <User Ashley>, <User Nell>, <User Nita>]
+
+#JSON in Python - Advanced Python 11 - Programming Tutorial
+person = {"name": "John", "age": 30, "city": "New York", "hasChildren": False, "titles": ["engineer", "programmer"]}
+converttojson = json.dumps(person)
+print(converttojson) #print {"name": "John", "age": 30, "city": "New York", "hasChildren": false, "titles": ["engineer", "programmer"]}  #RM:  false is lowercase
+converttojson = json.dumps(person, indent=4, separators=("; ", "= "), sort_keys=True)
+print(converttojson)
+'''
+{
+    "age"= 30; 
+    "city"= "New York"; 
+    "hasChildren"= false; 
+    "name"= "John"; 
+    "titles"= [
+        "engineer"; 
+        "programmer"
+    ]
+}
+'''
+converttojson = json.dumps(person, indent=4, sort_keys=True)
+with open("person.json","w") as fileobject:
+    json.dump(converttojson, fileobject, indent=4)
+convertodictionary = json.loads(converttojson)
+print(convertodictionary) #print {'age': 30, 'city': 'New York', 'hasChildren': False, 'name': 'John', 'titles': ['engineer', 'programmer']}
+with open("person.json","r") as fileobject:
+    persontodictionary = json.load(fileobject)
+    print(persontodictionary)
+    '''
+    {
+    "age": 30,
+    "city": "New York",
+    "hasChildren": false,
+    "name": "John",
+    "titles": [
+        "engineer",
+        "programmer"
+        ]
+    }
+    '''
+class User:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+user = User("Max", 27)
+def encodeuser(o):
+    if isinstance(o, User):
+        return {"name":o.name,"age":o.age,o.__class__.__name__: True}
+    else:
+        raise TypeError("Object of type User is not JSOn serializable")
+usertojson = json.dumps(user, default=encodeuser)
+print(usertojson) #print {"name": "Max", "age": 27, "User": true}
+from json import JSONEncoder
+class UserEncoder(JSONEncoder):
+    def default(self, o):
+        if isinstance(o, User):
+            return {"name":o.name,"age":o.age,o.__class__.__name__: True}      
+        return JSONEncoder.default(self,o)
+usertojson = json.dumps(user, cls=UserEncoder)
+print(usertojson) #print {"name": "Max", "age": 27, "User": true}
+usertojson = UserEncoder().encode(user)
+print(usertojson) #print {"name": "Max", "age": 27, "User": true}
+usertodictionary = json.loads(usertojson)
+print(usertodictionary) #print {'name': 'Max', 'age': 27, 'User': True}
+def decode_user(dct):
+    if User.__name__ in dct:
+        return User(name=dct["name"], age=dct["age"])
+    return dct
+usertodictionary = json.loads(usertojson, object_hook=decode_user)
+print(usertodictionary) #print <__main__.User object at 0x7fded4643cc0>
+print(type(usertodictionary)) #print <class '__main__.User'>
+print(usertodictionary.name) #print Max
