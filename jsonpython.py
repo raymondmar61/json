@@ -395,3 +395,126 @@ usertodictionary = json.loads(usertojson, object_hook=decode_user)
 print(usertodictionary) #print <__main__.User object at 0x7fded4643cc0>
 print(type(usertodictionary)) #print <class '__main__.User'>
 print(usertodictionary.name) #print Max
+
+#How to Write Python Scripts to Analyze JSON APIs and Sort Results
+import json
+import time
+import requests
+r = requests.get("https://formulae.brew.sh/api/formula.json")
+packagesjson = r.json()
+#print(packagesjson) #print ...c'}}}}, 'keg_only': False, 'bottle_disabled': False, 'options': [], 'build_dependencies': [], 'dependencies': [], 'recommended_dependencies': [], 'optional_dependencies': [], 'uses_from_macos': [], 'requirements': [], 'conflicts_with': [], 'caveats': None, 'installed': [], 'linked_keg': None, 'pinned': False, 'outdated': False}, {'name': 'tokyo-dystopia', 'full_name': 'tokyo-dystopia', 'oldname': None, 'aliases': [], 'versioned_formulae': [], 'desc': 'Lightweight full-text search system', 'homepage': 'https://fallabs.com/tokyodystopia/', 'versions': {'stable': '0.9.15', 'devel': None, 'head': None, 'bottle': True}, 'urls': {'stable': {'url': 'https://fallabs.com/tokyodystopia/tokyodystopia-0.9.15.tar.gz', 'tag': None, 'revision': None}}, 'revision': 0, 'version_scheme': 0, 'bottle': {'stable': {'rebuild': 0, 'cellar': ':any', 'prefix': '/usr/local', 'root_url': 'https://homebrew.bintray.com/bottles', 'files': {'catalina': {'url': 'https://homebrew.bintray.com/bottles/tokyo-dystopia-0.9.15.catalina.bottle.tar.gz', 'sha256': 'eb04133c9d459ee1ab9a4fe00b3f6b31621d9df2672a252784779a44a5991b77'}, 'mojave': {'url': 'https://homebrew.bintray.com/bottles/tokyo-dystopia-0.9.15.mojave.bottle.tar.gz', 'sha256': '056aa0bfed85351c6296b0749dfa15a2e9471ef554796f726708438e312b5790'}, 'high_sierra': {'url': 'https://homebrew.bintray.com/bottles/tokyo-dystopia-0.9.15.high_sierra.bottle.tar.gz', 'sha256': '3f00b619720603bd0712b52d01a355124604637c44cab5a3132fda942f195e2c'}, 'sierra': ...
+packagesstring = json.dumps(packagesjson, indent=2) #the s is string
+#print(packagesstring)
+'''
+          "el_capitan": {
+            "url": "https://homebrew.bintray.com/bottles/xml-coreutils-0.8.1.el_capitan.bottle.1.tar.gz",
+            "sha256": "19bdcacd49657e78f82fd7743a50266ff4945e644b069ac2c39a8787a57911a5"
+          },
+          "yosemite": {
+            "url": "https://homebrew.bintray.com/bottles/xml-coreutils-0.8.1.yosemite.bottle.1.tar.gz",
+            "sha256": "1342c807e5ddc23a72e750f07258864fdf2fc1a8ce9072cb7797955fdd0e3656"
+          },
+'''
+#print(packagesstring[0]) #print [
+# print(type(packagesstring)) #print <class 'str'>
+firstpackagestring = json.dumps(packagesjson[0], indent=2)
+# print(type(firstpackagestring)) #print <class 'str'>
+# print(firstpackagestring)
+'''
+{
+  "name": "a2ps",
+  "full_name": "a2ps",
+  "oldname": null,
+  "aliases": [],
+  "versioned_formulae": [],
+  "desc": "Any-to-PostScript filter",
+  "homepage": "https://www.gnu.org/software/a2ps/",
+  "versions": {
+    "stable": "4.14",
+    "devel": null,
+    "head": null,
+    "bottle": true
+  },
+  "urls": {
+    "stable": {
+      "url": "https://ftp.gnu.org/gnu/a2ps/a2ps-4.14.tar.gz",
+      "tag": null,
+      "revision": null
+    }
+  },
+...
+'''
+#https://formulae.brew.sh/api/formula/a2ps.json  #RM:  the url has the analytics for its software package
+firstpackagejsonname = packagesjson[0]  #RM:  also works-->firstpackagejsonname = json.dumps(packagesjson[0], indent=0)
+# print(type(firstpackagejsonname)) #print <class 'dict'>
+# print(firstpackagejsonname)
+'''
+{'name': 'a2ps', 'full_name': 'a2ps', 'oldname': None, 'aliases': [], 'versioned_formulae': [], 'desc': 'Any-to-PostScript filter', 'homepage': 'https://www.gnu.org/software/a2ps/', 'versions': {'stable': '4.14', 'devel': None, 'head': None, 'bottle': True}, 'urls': {'stable': {'url': 'https://ftp.gnu.org/gnu/a2ps/a2ps-4.14.tar.gz', 'tag': None, 'revision': None}}, 'revision': 0, 'version_scheme': 0, 'bottle': {'stable': {'rebuild': 3, 'cellar': '/usr/local/Cellar', 'prefix': '/usr/local', 'root_url': 'https://homebrew.bintray.com/bottles', 'files': {'catalina': {'url': 'https://homebrew.bintray.com/bottles/a2ps-4.14.catalina.bottle.3.tar.gz', 'sha256': '98a293e2d83134c9a1c35026f68207d9fc2ac1bde9d7d15dd29849d7d9c5b237'}, 'mojave': {'url': 'https://homebrew.bintray.com/bottles/a2ps-4.14.mojave.bottle.3.tar.gz', 'sha256': 'b3d7d7bd0bfcada7fc2bc2340ab67362e5087e53b4d611d84aafedf713bde6c3'}, 'high_sierra': {'url': 'https://homebrew.bintray.com/bottles/a2ps-4.14.high_sierra.bottle.3.tar.gz', 'sha256': '99646196c8b9e6d5a7b67ecca1589160749d690128bb89aace3b79d4c355dfde'}, 'sierra': {'url': 'https://homebrew.bintray.com/bottles/a2ps-4.14.sierra.bottle.3.tar.gz', 'sha256': '5a1c466a3f833797710464dd1aaf4ad6c9ff0a47de33ab3b2ba9cf0c2be36bfd'}, 'el_capitan': {'url': 'https://homebrew.bintray.com/bottles/a2ps-4.14.el_capitan.bottle.3.tar.gz', 'sha256': '532c3f14debcd59028285dad1d6fe41dbad481718cc1752b1b9e7c05fd82e27f'}}}}, 'keg_only': False, 'bottle_disabled': False, 'options': [], 'build_dependencies': [], 'dependencies': [], 'recommended_dependencies': [], 'optional_dependencies': [], 'uses_from_macos': [], 'requirements': [], 'conflicts_with': [], 'caveats': None, 'installed': [], 'linked_keg': None, 'pinned': False, 'outdated': False}
+'''
+firstpackagejsonname = packagesjson[0]["name"]
+print(firstpackagejsonname) #print a2ps
+firstpackagejsondescription = packagesjson[0]["desc"]
+packageurl = f"https://formulae.brew.sh/api/formula/{firstpackagejsonname}.json"
+r = requests.get(packageurl)
+completepackagejson = r.json()
+#instructor included the completepackagestring for the watcher to see the a2ps json as a string
+completepackagestring = json.dumps(completepackagejson, indent=2)
+# print(type(completepackagestring)) #print <class 'str'>
+# print(completepackagestring)
+'''
+{
+  "name": "a2ps",
+  "full_name": "a2ps",
+  "oldname": null,
+  "aliases": [],
+  "versioned_formulae": [],
+  "desc": "Any-to-PostScript filter",
+  "homepage": "https://www.gnu.org/software/a2ps/",
+  "versions": {
+    "stable": "4.14",
+    "devel": null,
+    "head": null,
+    "bottle": true
+  },
+  "urls": {
+    "stable": {
+      "url": "https://ftp.gnu.org/gnu/a2ps/a2ps-4.14.tar.gz",
+      "tag": null,
+      "revision": null
+    }
+  },
+...
+'''
+#firstpackagestringanalytics = packagesjson[0]["analytics"]["install_on_request"]  #RM:  error message I don't know why?
+firstpackagestringanalytics = completepackagejson["analytics"]["install_on_request"]
+print(firstpackagestringanalytics) #print {'30d': {'a2ps': 81}, '90d': {'a2ps': 247}, '365d': {'a2ps': 1133}}
+firstpackagestringanalytics30d = completepackagejson["analytics"]["install_on_request"]["30d"][firstpackagejsonname]
+print(firstpackagestringanalytics30d) #print 81
+firstpackagestringanalytics90d = completepackagejson["analytics"]["install_on_request"]["90d"][firstpackagejsonname]
+firstpackagestringanalytics365d = completepackagejson["analytics"]["install_on_request"]["365d"][firstpackagejsonname]
+print(firstpackagejsonname, firstpackagejsondescription, firstpackagestringanalytics30d, firstpackagestringanalytics90d, firstpackagestringanalytics365d) #print a2ps Any-to-PostScript filter 81 247 1133
+r = requests.get("https://formulae.brew.sh/api/formula.json")
+packagesjson = r.json()
+print(len(packagesjson)) #print 5072
+#instructor adds a sleep to slow down API requesting 5,072 packages
+packageanalyticslist = []
+timerstart = time.perf_counter()
+for eachpackagesjson in packagesjson:
+    jsonname = eachpackagesjson["name"]
+    jsondescription = eachpackagesjson["desc"]
+    packageurl = f"https://formulae.brew.sh/api/formula/{jsonname}.json"
+    r = requests.get(packageurl)
+    completepackagejson = r.json()
+    packageanalytics30d = completepackagejson["analytics"]["install_on_request"]["30d"][jsonname]
+    packageanalytics90d = completepackagejson["analytics"]["install_on_request"]["90d"][jsonname]
+    packageanalytics365d = completepackagejson["analytics"]["install_on_request"]["365d"][jsonname]
+    datadictionary = {"name":jsonname,"description":jsondescription,"analytics":{"30d":packageanalytics30d,"90d":packageanalytics90d,"365d":packageanalytics365d}}
+    packageanalyticslist.append(datadictionary)
+    print(f"Got {jsonname} in {r.elapsed.total_seconds()} seconds")
+    time.sleep(r.elapsed.total_seconds())
+    #break #instructor added break statement to test for first result only.
+print(packageanalyticslist)
+timerend = time.perf_counter()
+print(f"Finished in {timerend-timerstart} seconds")
+with open("packagesinfo.json","w") as fileobject:
+    json.dump(packageanalyticslist, fileobject, indent=2) #json.dumps with an s means string
