@@ -557,3 +557,13 @@ print(type(inin61["entities"]["url"]["urls"])) #print <class 'list'>
 print(inin61["entities"]["url"]["urls"][0]) #print {'url': 'https://t.co/jXjuhIMFeG', 'expanded_url': 'https://www.innovateinfinitely.com', 'display_url': 'innovateinfinitely.com', 'indices': [0, 23]}
 print(type(inin61["entities"]["url"]["urls"][0])) #print <class 'dict'>
 print(inin61["entities"]["url"]["urls"][0]["expanded_url"]) #print https://www.innovateinfinitely.com
+
+#Use For loop to see all json fields
+for eachtweeturl in status._json["quoted_status"]["entities"]:
+	print(eachtweeturl)
+	'''
+	hashtags
+	symbols
+	user_mentions
+	urls
+	'''
