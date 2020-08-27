@@ -567,3 +567,164 @@ for eachtweeturl in status._json["quoted_status"]["entities"]:
 	user_mentions
 	urls
 	'''
+#Use For loop to see all json fields complete
+import tweepy
+import twitter_credentials as tc
+authenticate = tweepy.OAuthHandler(tc.consumerkey, tc.consumersecret)
+authenticate.set_access_token(tc.accesstoken, tc.accesstokensecret)
+api = tweepy.API(authenticate)
+for status in api.user_timeline(id="inin61", tweet_mode="extended", count=1):
+	for eachtweeturl in status._json:
+		print(eachtweeturl)
+		'''
+		created_at
+		id
+		id_str
+		full_text
+		truncated
+		display_text_range
+		entities
+		source
+		in_reply_to_status_id
+		in_reply_to_status_id_str
+		in_reply_to_user_id
+		in_reply_to_user_id_str
+		in_reply_to_screen_name
+		user
+		geo
+		coordinates
+		place
+		contributors
+		retweeted_status
+		is_quote_status
+		retweet_count
+		favorite_count
+		favorited
+		retweeted
+		lang
+		'''
+for status in api.user_timeline(id="inin61", tweet_mode="extended", count=1):
+	for allreretweeted_status in status._json["retweeted_status"]:
+		print(allreretweeted_status)
+		'''
+		created_at
+		id
+		id_str
+		full_text
+		truncated
+		display_text_range
+		entities
+		extended_entities
+		source
+		in_reply_to_status_id
+		in_reply_to_status_id_str
+		in_reply_to_user_id
+		in_reply_to_user_id_str
+		in_reply_to_screen_name
+		user
+		geo
+		coordinates
+		place
+		contributors
+		is_quote_status
+		retweet_count
+		favorite_count
+		favorited
+		retweeted
+		possibly_sensitive
+		lang
+		'''
+for status in api.user_timeline(id="inin61", tweet_mode="extended", count=4):
+	if status._json["id"] == 1298789501565693952:
+		for eachtweeturl in status._json["retweeted_status"]:
+			print(eachtweeturl)
+			'''
+			created_at
+			id
+			id_str
+			full_text
+			truncated
+			display_text_range
+			entities
+			extended_entities
+			source
+			in_reply_to_status_id
+			in_reply_to_status_id_str
+			in_reply_to_user_id
+			in_reply_to_user_id_str
+			in_reply_to_screen_name
+			user
+			geo
+			coordinates
+			place
+			contributors
+			is_quote_status
+			retweet_count
+			favorite_count
+			favorited
+			retweeted
+			possibly_sensitive
+			lang
+			'''
+for status in api.user_timeline(id="inin61", tweet_mode="extended", count=4):
+	if status._json["id"] == 1298789501565693952:
+		for eachtweeturl in status._json["retweeted_status"]["entities"]:
+			print(eachtweeturl)
+			'''
+			hashtags
+			symbols
+			user_mentions
+			urls
+			media
+			'''
+for status in api.user_timeline(id="inin61", tweet_mode="extended", count=4):
+	if status._json["id"] == 1298789501565693952:
+		for eachtweeturl in status._json["retweeted_status"]["entities"]["media"]:
+			print(eachtweeturl)
+			'''
+			{'id': 1298761835177562114, 'id_str': '1298761835177562114', 'indices': [244, 267], 'media_url': 'http://pbs.twimg.com/amplify_video_thumb/1298761835177562114/img/D22KhvlXVGQUfIoc.jpg', 'media_url_https': 'https://pbs.twimg.com/amplify_video_thumb/1298761835177562114/img/D22KhvlXVGQUfIoc.jpg', 'url': 'https://t.co/HRoLbCS4SN', 'display_url': 'pic.twitter.com/HRoLbCS4SN', 'expanded_url': 'https://twitter.com/espn/status/1298761885823774721/video/1', 'type': 'photo', 'sizes': {'thumb': {'w': 150, 'h': 150, 'resize': 'crop'}, 'medium': {'w': 1200, 'h': 675, 'resize': 'fit'}, 'small': {'w': 680, 'h': 383, 'resize': 'fit'}, 'large': {'w': 1280, 'h': 720, 'resize': 'fit'}}}
+			'''
+for status in api.user_timeline(id="inin61", tweet_mode="extended", count=4):
+	if status._json["id"] == 1298789501565693952:
+		for eachtweeturl in status._json["retweeted_status"]["extended_entities"]["media"]:
+			print(eachtweeturl)
+			'''
+			{'id': 1298761835177562114, 'id_str': '1298761835177562114', 'indices': [244, 267], 'media_url': 'http://pbs.twimg.com/amplify_video_thumb/1298761835177562114/img/D22KhvlXVGQUfIoc.jpg', 'media_url_https': 'https://pbs.twimg.com/amplify_video_thumb/1298761835177562114/img/D22KhvlXVGQUfIoc.jpg', 'url': 'https://t.co/HRoLbCS4SN', 'display_url': 'pic.twitter.com/HRoLbCS4SN', 'expanded_url': 'https://twitter.com/espn/status/1298761885823774721/video/1', 'type': 'video', 'sizes': {'thumb': {'w': 150, 'h': 150, 'resize': 'crop'}, 'medium': {'w': 1200, 'h': 675, 'resize': 'fit'}, 'small': {'w': 680, 'h': 383, 'resize': 'fit'}, 'large': {'w': 1280, 'h': 720, 'resize': 'fit'}}, 'video_info': {'aspect_ratio': [16, 9], 'duration_millis': 118919, 'variants': [{'content_type': 'application/x-mpegURL', 'url': 'https://video.twimg.com/amplify_video/1298761835177562114/pl/4vy7og0R6lw6Ubi4.m3u8?tag=13'}, {'bitrate': 288000, 'content_type': 'video/mp4', 'url': 'https://video.twimg.com/amplify_video/1298761835177562114/vid/480x270/3rEQFbXpOPrvg0Dr.mp4?tag=13'}, {'bitrate': 832000, 'content_type': 'video/mp4', 'url': 'https://video.twimg.com/amplify_video/1298761835177562114/vid/640x360/RNm9PsDXaXfGBMPi.mp4?tag=13'}, {'bitrate': 2176000, 'content_type': 'video/mp4', 'url': 'https://video.twimg.com/amplify_video/1298761835177562114/vid/1280x720/tdEUPgemWBdCCSA8.mp4?tag=13'}]}, 'additional_media_info': {'title': '', 'description': '', 'monetizable': False}}
+			'''
+for status in api.user_timeline(id="inin61", tweet_mode="extended", count=4):
+	if status._json["id"] == 1298789501565693952:
+		for eachtweeturl in status._json["retweeted_status"]["extended_entities"]["media"][0]:
+			print(eachtweeturl)
+			'''
+			id
+			id_str
+			indices
+			media_url
+			media_url_https
+			url
+			display_url
+			expanded_url
+			type
+			sizes
+			video_info
+			additional_media_info
+			'''
+for status in api.user_timeline(id="inin61", tweet_mode="extended", count=4):
+	if status._json["id"] == 1298789501565693952:
+		for eachtweeturl in status._json["retweeted_status"]["extended_entities"]["media"][0]["sizes"]:
+			print(eachtweeturl)
+			'''
+			thumb
+			medium
+			small
+			large
+			'''
+for status in api.user_timeline(id="inin61", tweet_mode="extended", count=4):
+	if status._json["id"] == 1298789501565693952:
+		for eachtweeturl in status._json["retweeted_status"]["extended_entities"]["media"][0]["video_info"]:
+			print(eachtweeturl)
+			'''
+			aspect_ratio
+			duration_millis
+			variants
+			'''
