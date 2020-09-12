@@ -728,3 +728,21 @@ for status in api.user_timeline(id="inin61", tweet_mode="extended", count=4):
 			duration_millis
 			variants
 			'''
+
+#Python Crash Course ch16downloadingdata.py
+import json
+
+filename = "population_data.json"
+with open(filename, "r") as fileobject:
+    loadpopulationdata = json.load(fileobject)
+#print(loadpopulationdata) #print [{'Country Name': 'Arab World', 'Country Code': 'ARB', 'Year': '1960', 'Value': '96388069'}, {'Country Name': 'Arab World', 'Country Code': 'ARB', 'Year': '1961', 'Value': '98882541.4'}, {'Country Name': 'Arab World', 'Country Code': 'ARB', 'Year': '1962', 'Value': '101474075.8'}, {'Country Name': 'Arab World', 'Country Code': 'ARB', 'Year': '1963', 'Value': '104169209.2'}, . . .
+for eachloadpopulationdata in loadpopulationdata:
+    #print(eachloadpopulationdata) #print 'Country Name': 'Arab World', 'Country Code': 'ARB', 'Year': '1960', 'Value': '96388069'}\n {'Country Name': 'Arab World', 'Country Code': 'ARB', 'Year': '1961', 'Value': '98882541.4'}\n {'Country Name': 'Arab World', 'Country Code': 'ARB', 'Year': '1962', 'Value': '101474075.8'}\n {'Country Name': 'Arab World', 'Country Code': 'ARB', 'Year': '1963', 'Value': '104169209.2'}\n . . .
+    #print(eachloadpopulationdata["Year"]) #print 1960\n 1961\n 1962\n 1963
+    if eachloadpopulationdata["Year"] == "2010":
+        countryname = eachloadpopulationdata["Country Name"]
+        population = eachloadpopulationdata["Value"]
+        #print(countryname + ", " + population) #print Arab World, 357868000\n Caribbean small states, 6880000\n East Asia & Pacific (all income levels), 2201536674\n . . .
+        populationasinteger = int(float(eachloadpopulationdata["Value"]))
+        print(populationasinteger) #print 357868000 6880000 2201536674
+        print(type(populationasinteger)) #print <class 'int'> <class 'int'> <class 'int'>
